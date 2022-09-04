@@ -1,0 +1,3 @@
+include ':myLibrary'
+include ':app'
+rootProject.name = "canX"
