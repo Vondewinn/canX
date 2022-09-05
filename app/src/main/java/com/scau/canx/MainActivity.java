@@ -18,9 +18,7 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnSend, btn250K, btn500K;
-    private CommunicationService mService;
     private byte[] data = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x00};
-
     private CanBusHelper canBusHelper;
 
     @Override

@@ -17,6 +17,7 @@ public class CanBusHelper {
     private static Context mContext;
     private static CanBusHelper canBusHelper;
     private static CommunicationService mService;
+    private boolean _isOpen = false;
 
     private CanBusHelper(){
 
@@ -40,11 +41,17 @@ public class CanBusHelper {
             mService.setShutdownCountTime(12);
             mService.bind();
             dataReceiveBuffer();
+            _isOpen = true;
             Log.e("cansdk", "CAN START!");
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("cansdk", e.getMessage());
         }
+    }
+
+    public boolean isOpen() {
+        if (_isOpen) return true;
+        else return false;
     }
 
     /*
@@ -106,6 +113,7 @@ public class CanBusHelper {
     public void close() {
         if (mService != null) {
             try {
+                _isOpen = false;
                 mService.unbind();
             } catch (Exception e) {
                 e.printStackTrace();
